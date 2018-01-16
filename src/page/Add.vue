@@ -2,7 +2,7 @@
 <div class="add">
 	<!-- 标题栏 开始 -->
 	<div class="c_header">
-		<div class="back">新增</div>
+		<div class="back" @click="s_home()">新增</div>
 	</div>
 	<!-- 标题栏 结束 -->
 	<!-- 滚动（替换为 java 组件） 开始 -->
@@ -104,6 +104,13 @@
 
 <script>
 /* eslint-disable */
+export default {
+  methods: {
+    s_home () {
+	  this.$router.push({ path: 'home' })
+	}
+  }
+}
 </script>
 
 <style>

@@ -1,7 +1,7 @@
 <template>
 <div class="search">
     <div class="c_header">
-		<div class="back" ontap="hidePopup(this)">查询</div>
+		<div class="back" @click="s_home()">查询</div>
 		<div class="fn"><button type="button" class="e_button-blue"><span class="e_ico-more"></span></button></div>
 	</div>
 	<div class="c_box c_box-blue l_padding l_padding-u">
@@ -42,6 +42,13 @@
 
 <script>
 /* eslint-disable */
+export default {
+  methods: {
+    s_home () {
+	  this.$router.push({ path: 'home' })
+	}
+  }
+}
 </script>
 
 <style>

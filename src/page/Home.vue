@@ -2,11 +2,11 @@
 <div class="home">
 	<div class="c_header">
 		<div class="left">
-			<div class="fn" @click="add">
+			<div class="fn" @click="h_add()">
 				<span class="e_ico-add"></span>
 			</div>
 		</div>
-		<div class="right">
+		<div class="right" @click="h_search()">
 			<div class="fn">
 				<span class="e_ico-search"></span>
 			</div>
@@ -35,14 +35,14 @@
 			<!-- 列表 开始 -->
 			<div class="c_list c_list-line c_list-border c_list-space">
 				<ul>
-					<li>
+					<li @click="h_details()" v-for="(list,key) in lists">
 						<div class="main">
-							<div class="title">湖南第三代互联网CRM</div>
-							<div class="content">研发阶段</div>
+							<div class="title">{{list.title}}</div>
+							<div class="content">{{list.stage}}</div>
 							<div class="content">
 								<span class="e_progress">
 									<span class="e_progressBar">
-										<span style="width:50%" class="e_progressProgress">50%</span>
+										<span :style="{width:list.progress+'%'}" class="e_progressProgress">{{list.progress}}%</span>
 									</span>
 									<input type="hidden" name="myProgress" id="myProgress" />
 								</span>
@@ -50,64 +50,7 @@
 						</div>
 						<div class="side">
 							<div class="e_tag e_tag-navy">
-								<span class="e_tagText">10人</span>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="main">
-							<div class="title">项目二</div>
-							<div class="content">实施阶段</div>
-							<div class="content">
-								<span class="e_progress">
-									<span class="e_progressBar">
-										<span style="width:50%" class="e_progressProgress">50%</span>
-									</span>
-									<input type="hidden" name="myProgress" id="myProgress" />
-								</span>
-							</div>
-						</div>
-						<div class="side">
-							<div class="e_tag e_tag-navy">
-								<span class="e_tagText">20人</span>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="main">
-							<div class="title">项目三</div>
-							<div class="content">研发阶段</div>
-							<div class="content">
-								<span class="e_progress e_progress-orange">
-									<span class="e_progressBar">
-										<span style="width:70%" class="e_progressProgress">70%</span>
-									</span>
-									<input type="hidden" name="myProgress" id="myProgress" />
-								</span>
-							</div>
-						</div>
-						<div class="side">
-							<div class="e_tag e_tag-navy">
-								<span class="e_tagText">50人</span>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="main">
-							<div class="title">项目四</div>
-							<div class="content">上线</div>
-							<div class="content">
-								<span class="e_progress e_progress-orange">
-									<span class="e_progressBar">
-										<span style="width:70%" class="e_progressProgress">70%</span>
-									</span>
-									<input type="hidden" name="myProgress" id="myProgress" />
-								</span>
-							</div>
-						</div>
-						<div class="side">
-							<div class="e_tag e_tag-navy">
-								<span class="e_tagText">50人</span>
+								<span class="e_tagText">{{list.num}}人</span>
 							</div>
 						</div>
 					</li>
@@ -121,7 +64,48 @@
 </template>
 
 <script>
-
+/**
+ * 列表页
+ * xiams 20180116
+ */
+/* eslint-disable */
+export default {
+  data() {
+    return {
+	  lists: [
+		{
+		  title:"湖南第三代互联网CRM",
+		  stage:"研发阶段",
+		  progress:50,
+		  num:50
+		},
+		{
+		  title:"湖南第三代互联网CRM",
+		  stage:"研发阶段",
+		  progress:70,
+		  num:70
+		},
+		{
+		  title:"湖南第三代互联网CRM",
+		  stage:"研发阶段",
+		  progress:30,
+		  num:30
+		}
+	  ]
+	}
+  },
+  methods: {
+    h_add () {
+	  this.$router.push({ path: 'add' })
+	},
+    h_search () {
+	  this.$router.push({ path: 'search' })
+	},
+	h_details () {
+	  this.$router.push({ path: 'details' })
+	}
+  }
+}
 </script>
 
 <style>
