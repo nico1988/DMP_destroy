@@ -90,6 +90,12 @@ export default {
 		  stage:"研发阶段",
 		  progress:30,
 		  num:30
+		},
+		{
+		  title:"湖南第三代互联网CRM",
+		  stage:"研发阶段",
+		  progress:30,
+		  num:30
 		}
 	  ]
 	}
