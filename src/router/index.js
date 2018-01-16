@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Home from '@/page/Home'
 import Details from '@/page/Details'
 import Add from '@/page/Add'
+import Search from '@/page/Search'
 
 Vue.use(Router)
 
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     },
     {
       path: '/Home',
@@ -28,6 +28,11 @@ export default new Router({
       path: '/Add',
       name: 'Add',
       component: Add
+    },
+    {
+      path: '/Search',
+      name: 'Search',
+      component: Search
     }
   ]
 })

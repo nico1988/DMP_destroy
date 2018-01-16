@@ -2,7 +2,7 @@
 <div class="home">
 	<div class="c_header">
 		<div class="left">
-			<div class="fn">
+			<div class="fn" @click="add">
 				<span class="e_ico-add"></span>
 			</div>
 		</div>
@@ -121,7 +121,7 @@
 </template>
 
 <script>
-/* eslint-disable */
+
 </script>
 
 <style>
