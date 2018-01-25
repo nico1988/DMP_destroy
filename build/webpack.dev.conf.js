@@ -12,7 +12,9 @@ const portfinder = require('portfinder')
 const address = require('address')
 
 // const HOST = process.env.HOST
-const HOST = address.ip() || process.env.HOST
+// const HOST = address.ip() || process.env.HOST
+const HOST = '192.168.31.146'
+// const HOST = '192.168.0.101'
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {

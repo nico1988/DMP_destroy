@@ -3,11 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuex from 'Vuex'
+import VueBus from 'vue-bus';
 
+Vue.use(Vuex)
+Vue.use(VueBus)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-// eslint-disable-next-line
 var app = new Vue({
   el: '#app',
   router,

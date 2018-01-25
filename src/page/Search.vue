@@ -45,7 +45,7 @@
 export default {
   methods: {
     s_home () {
-	  this.$router.push({ path: 'home' })
+	  	this.$router.push({ path: 'home' })
 	}
   }
 }

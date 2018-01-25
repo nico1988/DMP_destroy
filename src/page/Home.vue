@@ -2,18 +2,24 @@
 <div class="home">
 	<div class="c_header">
 		<div class="left">
-			<div class="fn" @click="h_add()">
+			<div class="fn" @click="add()">
 				<span class="e_ico-add"></span>
 			</div>
 		</div>
-		<div class="right" @click="h_search()">
+		<div class="right" @click="logout()">
 			<div class="fn">
-				<span class="e_ico-search"></span>
+				<span class="e_ico-exit"></span>
 			</div>
 		</div>
 		<div class="auto">
 			<div class="text">远程交付管理</div>
 		</div>
+	</div>
+	<div class="c_box c_box-blue l_padding l_padding-u">
+		<span class="e_mix e_mix-r" style="width:100%;" >
+			<input type="text"  placeholder="" @click="search()"/>
+			<span class="e_ico-search e_purple" @click="search()"></span>
+		</span>
 	</div>
 	<!-- 标题栏 结束 -->
 	<div class="c_tab  c_tab-box c_tab-avg">
@@ -29,16 +35,16 @@
 		<div class="content">
 		</div>
 	</div>
-	<!-- 滚动（替换为 java 组件） 开始 -->
+	<!-- 列表 -->
 	<div class="c_scroll c_scroll-float c_scroll-header c_scroll-white" style="top:7.1em;">
 		<div class="l_padding">
 			<!-- 列表 开始 -->
 			<div class="c_list c_list-line c_list-border c_list-space">
 				<ul>
-					<li @click="h_details()" v-for="(list,key) in lists">
+					<li @click="to_details()" v-for="list in lists" v-bind:key="list.id">
 						<div class="main">
-							<div class="title">{{list.title}}</div>
-							<div class="content">{{list.stage}}</div>
+							<div class="title">{{list.name}}</div>
+							<div class="content">{{list.nodeName}}</div>
 							<div class="content">
 								<span class="e_progress">
 									<span class="e_progressBar">
@@ -50,7 +56,7 @@
 						</div>
 						<div class="side">
 							<div class="e_tag e_tag-navy">
-								<span class="e_tagText">{{list.num}}人</span>
+								<span class="e_tagText">{{list.peopleCount}}人</span>
 							</div>
 						</div>
 					</li>
@@ -64,56 +70,50 @@
 </template>
 
 <script>
+import home from '../api/Home/home'
 /**
  * 列表页
  * xiams 20180116
  */
 /* eslint-disable */
 export default {
+  mounted () {
+	console.info('HOME------->')
+    home.projectList().then((res) => {
+		this.lists = res.data
+	})
+  },
   data() {
     return {
 	  lists: [
-		{
-		  title:"湖南第三代互联网CRM",
-		  stage:"研发阶段",
-		  progress:50,
-		  num:50
-		},
-		{
-		  title:"湖南第三代互联网CRM",
-		  stage:"研发阶段",
-		  progress:70,
-		  num:70
-		},
-		{
-		  title:"湖南第三代互联网CRM",
-		  stage:"研发阶段",
-		  progress:30,
-		  num:30
-		},
-		{
-		  title:"湖南第三代互联网CRM",
-		  stage:"研发阶段",
-		  progress:30,
-		  num:30
-		}
+			{
+				name:"",
+				nodeName:"",
+				progress:80,
+				peopleCount:0
+			}
 	  ]
 	}
   },
   methods: {
-    h_add () {
-	  this.$router.push({ path: 'add' })
+    add () {
+		this.$router.push({ path: 'add' })
 	},
-    h_search () {
-	  this.$router.push({ path: 'search' })
+	search () {
+	  this.$router.push({ path: 'search'})
 	},
-	h_details () {
-	  this.$router.push({ path: 'details' })
+    logout () {
+		var ret = window.confirm("确定退出系统么?");
+		if(ret){
+			this.$router.push({ path: 'login' })
+		}
+	},
+	to_details () {
+		this.$router.push({ path: 'details' })
 	}
   }
 }
 </script>
 
-<style>
-
+<style lang="scss">
 </style>

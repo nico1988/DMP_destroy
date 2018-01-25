@@ -1,0 +1,34 @@
+.c_header{ background:#595387;}
+.s_phone .c_header .back.active{ background:#534f5c;}
+.c_box-blue{ background:#595387;}
+.c_header .fn .e_button-blue{ background:#595387;}
+.s_phone .c_header .fn > [class*="e_ico"].active { background:#534f5c;}
+
+.m_login{ 
+    background:#282333 url(../assets/TouchUI/content/img/login-bg.png) no-repeat top; background-size: 100%;
+    .logo{
+        width:14em;
+        margin:3em auto 0 auto;
+        img{width:100%;}
+    }
+    .form {
+        width:20em;
+        margin:3em auto;
+        input{ background:none; border:none; width:16em; height:3.5em; line-height:3.5em; color:#fff; margin-left:0.5em;}
+        li{
+            border-bottom:1px solid #404363;
+            line-height:3.5em;
+            span{ color:#7e7b85; font-size:1.4em;}
+        }
+    }
+    .submit{
+        width:21em;
+        margin:3em auto;
+        button{ border-radius:3px; font-size:1.3em;}
+        button.e_button-purple{ background:#494471;}
+    }
+    .l_col{ width:20em; margin:3em auto; color:#686570; font-size:1em;}
+}
+.e_purple{ color:#494471; }
+.e_button-purple{ background:#494471; color:#fff; border:none;}
+.s_phone .e_button-purple.active{ background:#534f5c; color:#fff; }
