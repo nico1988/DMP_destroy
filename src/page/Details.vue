@@ -2,7 +2,7 @@
 <div class="details">
 	<!-- 标题栏 开始 -->
 	<div class="c_header">
-		<div class="back" @click="d_back()">项目一XXXX</div>
+		<div class="back" @click="d_back()">项目详情</div>
 		<div class="fn">
 			<button class="e_button-blue" type="button"><span class="e_ico-edit"></span></button>
 		</div>

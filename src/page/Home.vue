@@ -1,5 +1,5 @@
 <template>
-<div class="home">
+<div class="home" >
 	<div class="c_header">
 		<div class="left">
 			<div class="fn" @click="add()">
@@ -36,12 +36,12 @@
 		</div>
 	</div>
 	<!-- 列表 -->
-	<div class="c_scroll c_scroll-float c_scroll-header c_scroll-white" style="top:7.1em;">
+	<div class="c_scroll c_scroll-float c_scroll-header c_scroll-white" style="top:7.1em;" >
 		<div class="l_padding">
 			<!-- 列表 开始 -->
 			<div class="c_list c_list-line c_list-border c_list-space">
 				<ul>
-					<li @click="to_details()" v-for="list in lists" v-bind:key="list.id">
+					<li @click="to_details()" v-for="list in lists" v-bind:key="list.id" v-if="lists[0].name!=''">
 						<div class="main">
 							<div class="title">{{list.name}}</div>
 							<div class="content">{{list.nodeName}}</div>
@@ -80,8 +80,8 @@ export default {
   mounted () {
 	console.info('HOME mounted------->')
     home.projectList().then((res) => {
-			this.lists = res.data
-		})
+		this.lists = res.data
+	})
   },
   data() {
     return {

@@ -5,6 +5,8 @@ import Login from '@/page/Login'
 import Details from '@/page/Details'
 import Add from '@/page/Add'
 import Search from '@/page/Search'
+import PersonDetail from '@/page/PersonDetail'
+import NotFound from '@/page/NotFound'
 
 Vue.use(Router)
 
@@ -38,6 +40,16 @@ export default new Router({
       path: '/Search',
       name: 'Search',
       component: Search
+    },
+    {
+      path: '/PersonDetail',
+      name: 'PersonDetail',
+      component: PersonDetail
+    },
+    {
+      path: '/*',
+      name: '404',
+      component: NotFound
     }
   ]
 })

@@ -6,8 +6,8 @@
 	</div>
 	<div class="c_box c_box-blue l_padding l_padding-u">
 		<span class="e_mix e_mix-r" style="width:100%;">
-			<input type="text"  placeholder="项目名称/员工姓名" v-model="queryStr"/>
-			<span class="e_ico-search" @click="search()"></span>
+			<input class="search" type="text"  placeholder="项目名称/员工姓名" @keyup.enter="doSearch()" @keyup.46="doSearch()" @keyup.8="doSearch()" v-model="queryStr"/>
+			<span class="e_ico-search" @click="doSearch()"></span>
 		</span>
 	</div>
 	<div class="c_scroll c_scroll-white c_scroll-float c_scroll-header c_scroll-search">
@@ -39,6 +39,7 @@ import search from '../api/Search/search'
 export default {
   mounted () {
 	  console.log('Search mounted------>')
+	  $('input.search').focus()
   },
   data() {
 	  return {
@@ -52,7 +53,8 @@ export default {
     s_home () {
 	  	this.$router.push({ path: 'home' })
 	},
-	search () {
+	doSearch () {
+		if(this.queryStr == '') return
 		search.queryStr(this.queryStr).then((res) => {
 			this.lists = res.data
 			this.peopleList = res.data.people;
@@ -60,7 +62,7 @@ export default {
 		})
 	},
 	details_person(userId) {
-		this.$router.push({ path: 'details' })
+		this.$router.push({ path: 'PersonDetail' })
 	},
 	details_project(id) {
 		this.$router.push({ path: 'details' })

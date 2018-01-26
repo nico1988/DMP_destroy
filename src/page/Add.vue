@@ -292,6 +292,7 @@ export default {
 		}
 	);
 	window["UI-popup"] = new Wade.Popup("UI-popup");
+	$('#mySegment').val(0) // 分段器初始化
   },
   beforeDestroy() {
 	  console.info("Add beforeDestroy")
