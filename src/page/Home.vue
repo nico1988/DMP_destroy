@@ -78,10 +78,10 @@ import home from '../api/Home/home'
 /* eslint-disable */
 export default {
   mounted () {
-	console.info('HOME------->')
+	console.info('HOME mounted------->')
     home.projectList().then((res) => {
-		this.lists = res.data
-	})
+			this.lists = res.data
+		})
   },
   data() {
     return {
@@ -89,7 +89,7 @@ export default {
 			{
 				name:"",
 				nodeName:"",
-				progress:80,
+				progress:0,
 				peopleCount:0
 			}
 	  ]

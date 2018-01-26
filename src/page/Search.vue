@@ -6,46 +6,64 @@
 	</div>
 	<div class="c_box c_box-blue l_padding l_padding-u">
 		<span class="e_mix e_mix-r" style="width:100%;">
-			<input type="text"  placeholder="工号/姓名" />
-			<span class="e_ico-search"></span>
+			<input type="text"  placeholder="项目名称/员工姓名" v-model="queryStr"/>
+			<span class="e_ico-search" @click="search()"></span>
 		</span>
 	</div>
 	<div class="c_scroll c_scroll-white c_scroll-float c_scroll-header c_scroll-search">
 		<!-- 列表 开始 -->
-		<div class="c_list c_list-line">
+		<div class="c_list">
 			<ul>
-				<li>
-					<div class="pic e_ico-pic e_blue e_size-xxxl"><span class="e_ico-user"></span></div>
-					<div class="main">
-						<div class="title">猴子酒</div>
-						<div class="content">平台组</div>
-						<div class="content">长沙</div>
-						<div class="content">湖南互联网第三代CRM</div>
+				<li class="link" v-for="item in peopleList">
+					<div class="main" @click="details_person(item.userId)">
+						<div class="title">{{item.userName}}</div>
+						<div class="c_line"></div>
 					</div>
-					<div class="side">
-						<div class="e_tag">
-							<span class="e_tagText">72012</span>
-						</div>
+				</li>
+				<li class="link" v-for="item in projectList">
+					<div class="main" @click="details_project(item.id)">
+						<div class="title">{{item.name}}</div>
+						<div class="c_line"></div>
 					</div>
 				</li>
 			</ul>
 		</div>
 		<!-- 列表 结束 -->
-		<div class="c_line"></div>
-		<div class="c_box">
-			<div class="l_padding e_center e_blue">历史记录</div>
-		</div>
-		<div class="c_line"></div>
 	</div>
 </div>
 </template>
 
 <script>
+import search from '../api/Search/search'
 /* eslint-disable */
 export default {
+  mounted () {
+	  console.log('Search mounted------>')
+  },
+  data() {
+	  return {
+		  queryStr: '',
+		  lists: [],
+		  peopleList: [],
+		  projectList: []
+	  }
+  },
   methods: {
     s_home () {
 	  	this.$router.push({ path: 'home' })
+	},
+	search () {
+		search.queryStr(this.queryStr).then((res) => {
+			this.lists = res.data
+			this.peopleList = res.data.people;
+			this.projectList = res.data.project;
+		})
+	},
+	details_person(userId) {
+		this.$router.push({ path: 'details' })
+	},
+	details_project(id) {
+		this.$router.push({ path: 'details' })
 	}
   }
 }
